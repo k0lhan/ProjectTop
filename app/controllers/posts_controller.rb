@@ -46,6 +46,6 @@ private
   end
 
   def post_params
-   params.require(:post).permit(:user_id, :title, :body)
+   params.require(:post).permit(:user_id, :title, :body, {photos: []})
   end
 end

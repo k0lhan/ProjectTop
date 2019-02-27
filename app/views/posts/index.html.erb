@@ -1,4 +1,11 @@
-<h1>My Anime Collection</h1> <br>
+<h1>My Anime Collection</h1>
+<div align = "right">
+  <%= search_form_for @q do |f| %>
+    <%= f.search_field :title_cont %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
 <% @posts.each do |p| %>
   <%= link_to p.title, post_path(p.id) %> <br>
   <%= p.body %>

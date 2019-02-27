@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
   before_action :post_find, only: [:show, :edit, :update, :destroy]
   def index
-    @posts = Post.all
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true)
   end
 
   def new
@@ -21,6 +22,7 @@ class PostsController < ApplicationController
   end
 
   def show
+     @comments = @post.comments
   end
 
   def edit
